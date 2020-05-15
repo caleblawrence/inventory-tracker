@@ -2,7 +2,7 @@
 
 namespace inventory_tracker_server.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class ListTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace inventory_tracker_server.Data.Migrations
                 defaultValue: "");
 
             migrationBuilder.CreateTable(
-                name: "ItemList",
+                name: "InventoryList",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -23,9 +23,9 @@ namespace inventory_tracker_server.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItemList", x => x.Id);
+                    table.PrimaryKey("PK_InventoryList", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItemList_AspNetUsers_UserId",
+                        name: "FK_InventoryList_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -38,28 +38,28 @@ namespace inventory_tracker_server.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     name = table.Column<string>(nullable: false),
-                    ItemListId = table.Column<int>(nullable: false)
+                    InventoryListId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Item", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Item_ItemList_ItemListId",
-                        column: x => x.ItemListId,
-                        principalTable: "ItemList",
+                        name: "FK_Item_InventoryList_InventoryListId",
+                        column: x => x.InventoryListId,
+                        principalTable: "InventoryList",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Item_ItemListId",
-                table: "Item",
-                column: "ItemListId");
+                name: "IX_InventoryList_UserId",
+                table: "InventoryList",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemList_UserId",
-                table: "ItemList",
-                column: "UserId");
+                name: "IX_Item_InventoryListId",
+                table: "Item",
+                column: "InventoryListId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -68,7 +68,7 @@ namespace inventory_tracker_server.Data.Migrations
                 name: "Item");
 
             migrationBuilder.DropTable(
-                name: "ItemList");
+                name: "InventoryList");
 
             migrationBuilder.DropColumn(
                 name: "Discriminator",

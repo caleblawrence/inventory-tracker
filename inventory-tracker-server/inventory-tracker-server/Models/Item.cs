@@ -9,8 +9,8 @@ namespace inventory_tracker_server.Models
         public string Id { get; set; }
         [Required]
         public string name { get; set; }
-        public int ItemListId { get; set; }
-        public ItemList ItemList { get; set; }
+        public int InventoryListId { get; set; }
+        public InventoryList InventoryList { get; set; }
     }
 
 }

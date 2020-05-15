@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace inventory_tracker_server.Models
 {
-    public class ItemList
+    public class InventoryList
     {
         [Key]
         public int Id { get; set; }

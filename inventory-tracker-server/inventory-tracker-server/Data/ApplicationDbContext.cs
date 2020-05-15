@@ -15,7 +15,7 @@ namespace inventory_tracker_server.Data
         {
         }
 
-        public DbSet<ItemList> ItemList { get; set; }
+        public DbSet<InventoryList> InventoryList { get; set; }
         public DbSet<Item> Item { get; set; }
 
     }

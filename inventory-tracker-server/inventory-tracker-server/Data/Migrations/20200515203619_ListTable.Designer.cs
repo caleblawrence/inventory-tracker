@@ -9,8 +9,8 @@ using inventory_tracker_server.Data;
 namespace inventory_tracker_server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200515182349_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200515203619_ListTable")]
+    partial class ListTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -220,26 +220,7 @@ namespace inventory_tracker_server.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("inventory_tracker_server.Models.Item", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ItemListId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemListId");
-
-                    b.ToTable("Item");
-                });
-
-            modelBuilder.Entity("inventory_tracker_server.Models.ItemList", b =>
+            modelBuilder.Entity("inventory_tracker_server.Models.InventoryList", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -256,7 +237,26 @@ namespace inventory_tracker_server.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ItemList");
+                    b.ToTable("InventoryList");
+                });
+
+            modelBuilder.Entity("inventory_tracker_server.Models.Item", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("InventoryListId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InventoryListId");
+
+                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("inventory_tracker_server.Models.ApplicationUser", b =>
@@ -317,20 +317,20 @@ namespace inventory_tracker_server.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("inventory_tracker_server.Models.Item", b =>
-                {
-                    b.HasOne("inventory_tracker_server.Models.ItemList", "ItemList")
-                        .WithMany("Items")
-                        .HasForeignKey("ItemListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("inventory_tracker_server.Models.ItemList", b =>
+            modelBuilder.Entity("inventory_tracker_server.Models.InventoryList", b =>
                 {
                     b.HasOne("inventory_tracker_server.Models.ApplicationUser", "User")
-                        .WithMany("ItemLists")
+                        .WithMany("InventoryList")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("inventory_tracker_server.Models.Item", b =>
+                {
+                    b.HasOne("inventory_tracker_server.Models.InventoryList", "InventoryList")
+                        .WithMany("Items")
+                        .HasForeignKey("InventoryListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
