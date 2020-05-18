@@ -240,8 +240,9 @@ namespace inventory_tracker_server.Data.Migrations
 
             modelBuilder.Entity("inventory_tracker_server.Models.Item", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("InventoryListId")
                         .HasColumnType("INTEGER");

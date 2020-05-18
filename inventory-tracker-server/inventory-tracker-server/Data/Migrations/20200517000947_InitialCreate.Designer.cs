@@ -9,8 +9,8 @@ using inventory_tracker_server.Data;
 namespace inventory_tracker_server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200515203619_ListTable")]
-    partial class ListTable
+    [Migration("20200517000947_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -242,8 +242,9 @@ namespace inventory_tracker_server.Data.Migrations
 
             modelBuilder.Entity("inventory_tracker_server.Models.Item", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("InventoryListId")
                         .HasColumnType("INTEGER");

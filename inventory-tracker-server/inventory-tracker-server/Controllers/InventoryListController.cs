@@ -8,9 +8,9 @@ using inventory_tracker_server.Data;
 using inventory_tracker_server.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace inventory_tracker_server.Controllers
+namespace inventory_tracker_server.Controllerss
 {
-    [Authorize]
+    // [Authorize]
     [ApiController]
     public class InventoryListController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace inventory_tracker_server.Controllers
         [HttpGet("InventoryList")]
         public async Task<IEnumerable<InventoryList>> Get()
         {
-            var lists = await _db.InventoryList.ToListAsync();
+            var lists = await _db.InventoryList.Include("Items").ToListAsync();
             return lists;
         }
 
@@ -32,9 +32,9 @@ namespace inventory_tracker_server.Controllers
         [HttpPost("InventoryList")]
         public async Task<ActionResult<InventoryList>> Post(InventoryList inventoryList)
         {
-            var userId = _db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault().Id;
+            // var userId = _db.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault().Id;
 
-            inventoryList.UserId = userId;
+            // inventoryList.UserId = userId;
 
             _db.InventoryList.Add(inventoryList);
             await _db.SaveChangesAsync();

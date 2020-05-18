@@ -2,7 +2,7 @@
 
 namespace inventory_tracker_server.Data.Migrations
 {
-    public partial class ListTable : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,7 +36,8 @@ namespace inventory_tracker_server.Data.Migrations
                 name: "Item",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     name = table.Column<string>(nullable: false),
                     InventoryListId = table.Column<int>(nullable: false)
                 },
