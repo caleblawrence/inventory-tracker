@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "inventory-tracker-server", "inventory-tracker-server\inventory-tracker-server.csproj", "{9FF10250-CE71-4C4B-9B1F-49635AD613C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "inventory-tracker-server", "inventory-tracker-server.csproj", "{9FF10250-CE71-4C4B-9B1F-49635AD613C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
