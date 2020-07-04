@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace inventory_tracker_server.Controllerss
 {
-    [Authorize]
+    // [Authorize]
     [ApiController]
     // [Route("api/[controller]")]
     public class InventoryListController : ControllerBase

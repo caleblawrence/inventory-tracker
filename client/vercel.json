@@ -1,0 +1,13 @@
+{
+  "build": {
+    "env": {
+      "AUTH0_DOMAIN": "dev-yembpre9.us.auth0.com",
+      "AUTH0_CLIENT_ID": "Xkals1l8K6N9erw2ZYq6FN57NX0aF7u5",
+      "AUTH0_CLIENT_SECRET": "@auth0_client_secret",
+      "REDIRECT_URI": "https://my-website.now.sh/api/callback",
+      "POST_LOGOUT_REDIRECT_URI": "https://my-website.now.sh/",
+      "SESSION_COOKIE_SECRET": "@session_cookie_secret",
+      "SESSION_COOKIE_LIFETIME": 7200
+    }
+  }
+}
